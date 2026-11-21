@@ -1,58 +1,1124 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Title name | Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cybersecurity portfolio showcasing security projects, skills, certifications, and research." />
+  <meta name="theme-color" content="#4937A0" />
+  <title>Daphne | Cybersecurity Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --accent: #4937A0;
+      --accent-light: #8170dc;
+      --bg: #08090e;
+      --surface: #11131b;
+      --surface2: #171925;
+      --text: #f4f4f8;
+      --muted: #a0a2b2;
+      --border: rgba(255,255,255,.09);
+      --green: #73e5ae;
+      --font-heading: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
-      line-height: 1.6;
-      color: #222;
-      background: #f8f8fc;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.7;
+      overflow-x: hidden;
     }
-    h1, h2 { color: #4937a5; }
+
+    ::selection {
+      background: var(--accent);
+      color: white;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--accent);
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.3rem;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: #c9c1ff;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: .9rem;
+      color: #e8e5ff;
+      transition: .3s;
+    }
+
+    .nav-links a:hover {
+      color: white;
+      opacity: .7;
+    }
+
+    .menu-btn {
+      display: none;
+      background: transparent;
+      border: 0;
+      color: white;
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 100px 0;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: var(--accent);
+      filter: blur(180px);
+      opacity: .25;
+      top: -150px;
+      right: -100px;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 850px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      background: var(--surface);
+      font-size: .82rem;
+      color: var(--muted);
+      margin-bottom: 30px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--green);
+    }
+
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(3rem, 7vw, 5.7rem);
+      line-height: 1.1;
+      letter-spacing: -3px;
+      margin-bottom: 24px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #9a8bff, #c9bfff, #8c77ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 680px;
+      margin-bottom: 34px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 13px 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 8px;
+      font-size: .92rem;
+      font-weight: 600;
+      transition: .3s;
+      border: 1px solid var(--border);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-light);
+      transform: translateY(-3px);
+    }
+
+    .btn-secondary {
+      background: var(--surface);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent-light);
+      transform: translateY(-3px);
+    }
+
+    /* SECTION */
+
     section {
-      background: white;
-      padding: 20px;
-      margin: 20px 0;
-      border-radius: 12px;
+      padding: 100px 0;
+      border-top: 1px solid var(--border);
     }
-    a { color: #4937a5; }
+
+    .section-label {
+      font-size: .8rem;
+      color: var(--accent-light);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      letter-spacing: -1.5px;
+      margin-bottom: 22px;
+    }
+
+    .section-description {
+      color: var(--muted);
+      max-width: 700px;
+      margin-bottom: 45px;
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 45px;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .about-card {
+      background: var(--surface);
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .about-card h3 {
+      font-family: var(--font-heading);
+      margin-bottom: 20px;
+    }
+
+    .interest-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: var(--surface2);
+      color: #d6d6e3;
+      font-size: .85rem;
+    }
+
+    /* SKILLS */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .skill-card {
+      background: var(--surface);
+      padding: 26px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      transition: .3s;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-light);
+    }
+
+    .skill-icon {
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+    }
+
+    .skill-card h3 {
+      font-family: var(--font-heading);
+      margin-bottom: 15px;
+    }
+
+    .skill-card p {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .skill-tags span {
+      color: #c9c1ff;
+      background: rgba(73,55,160,.18);
+      padding: 5px 10px;
+      font-size: .75rem;
+      border-radius: 5px;
+    }
+
+    /* PROJECTS */
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: .3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-light);
+    }
+
+    .project-banner {
+      background: linear-gradient(135deg, #4937A0, #191629);
+      min-height: 190px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      position: relative;
+    }
+
+    .project-banner .terminal {
+      width: 100%;
+      background: #08090e;
+      border: 1px solid rgba(255,255,255,.15);
+      padding: 20px;
+      border-radius: 10px;
+      font-family: monospace;
+      color: var(--green);
+      font-size: .85rem;
+      box-shadow: 0 15px 40px rgba(0,0,0,.3);
+    }
+
+    .terminal .terminal-top {
+      color: #aaa;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #252535;
+      padding-bottom: 8px;
+    }
+
+    .project-content {
+      padding: 26px;
+    }
+
+    .project-content h3 {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      margin-bottom: 12px;
+    }
+
+    .project-content p {
+      color: var(--muted);
+      font-size: .9rem;
+      margin-bottom: 20px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .project-tags span {
+      border: 1px solid var(--border);
+      padding: 5px 9px;
+      font-size: .75rem;
+      color: #c9c1ff;
+      border-radius: 5px;
+    }
+
+    .project-link {
+      color: var(--accent-light);
+      font-size: .9rem;
+      font-weight: 600;
+    }
+
+    /* CERTIFICATIONS */
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .cert-card {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+    }
+
+    .cert-icon {
+      font-size: 1.5rem;
+      background: rgba(73,55,160,.2);
+      padding: 12px;
+      border-radius: 10px;
+    }
+
+    .cert-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+    }
+
+    .cert-card p {
+      color: var(--muted);
+      font-size: .85rem;
+      margin-top: 5px;
+    }
+
+    /* EDUCATION */
+
+    .timeline {
+      border-left: 2px solid var(--accent);
+      margin-left: 10px;
+      padding-left: 30px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 35px;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -38px;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      background: var(--accent-light);
+      border-radius: 50%;
+      box-shadow: 0 0 15px var(--accent-light);
+    }
+
+    .timeline-item h3 {
+      font-family: var(--font-heading);
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+    }
+
+    .timeline-date {
+      color: var(--accent-light);
+      font-size: .85rem;
+      margin-bottom: 5px;
+    }
+
+    /* CONTACT */
+
+    .contact-box {
+      text-align: center;
+      background: linear-gradient(145deg, rgba(73,55,160,.2), var(--surface));
+      border: 1px solid var(--border);
+      padding: 60px 30px;
+      border-radius: 20px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    footer span {
+      color: var(--accent-light);
+    }
+
+    /* ANIMATION */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 850px) {
+      .about-grid,
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .projects-grid,
+      .cert-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        width: 100%;
+        background: var(--accent);
+        padding: 25px;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .about-grid,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 80vh;
+        padding: 70px 0;
+      }
+
+      section {
+        padding: 75px 0;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <h1>Your Name</h1>
-  <p>Student | Learning computing and building projects</p>
 
-  <section>
-    <h2>About me</h2>
-    <p>Write a few sentences about yourself and what you are learning.</p>
-  </section>
+  <!-- HEADER -->
+  <header>
+    <nav class="container">
+      <a href="#home" class="logo">Daphne<span>.</span></a>
 
-  <section>
-    <h2>Projects</h2>
-    <h3>Project One</h3>
-    <p>What does it do? What did you use or learn?</p>
-    <a href="https://github.com/YOUR-USERNAME/YOUR-REPOSITORY">
-      View project on GitHub
-    </a>
-  </section>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation"
+        aria-expanded="false">☰</button>
 
-  <section>
-    <h2>Skills</h2>
-    <p>Add skills you are learning, such as HTML, Python, or databases.</p>
-  </section>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <section>
-    <h2>Find me online</h2>
-    <p>
-      <a href="https://github.com/YOUR-USERNAME">GitHub</a> |
-      <a href="YOUR-LINKEDIN-PROFILE-LINK">LinkedIn</a>
-    </p>
-  </section>
+  <!-- HERO -->
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content reveal">
+        <div class="status">
+          <span class="dot"></span>
+          Cybersecurity Learner | Building & Exploring
+        </div>
+
+        <h1>
+          Securing the<br>
+          <span class="gradient-text">Digital World.</span>
+        </h1>
+
+        <p>
+          Hi, I'm Daphne. A cybersecurity enthusiast passionate about
+          digital security, threat analysis, ethical hacking and building
+          practical security solutions. I believe in learning by doing,
+          exploring vulnerabilities and making technology safer.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">Explore My Projects ↗</a>
+          <a href="https://github.com/YOURUSERNAME"
+             target="_blank" rel="noopener noreferrer"
+             class="btn btn-secondary">GitHub ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container reveal">
+        <div class="section-label">01 / About Me</div>
+        <h2 class="section-title">Curiosity is my first line of defense.</h2>
+
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              I am a cybersecurity learner with a background in computer
+              applications and a growing interest in cybersecurity operations,
+              digital forensics, malware analysis and threat intelligence.
+            </p>
+
+            <p>
+              I enjoy exploring how systems work, understanding how
+              vulnerabilities arise and learning how security tools can be
+              used to identify and investigate potential threats.
+            </p>
+
+            <p>
+              My approach is practical and continuous: experiment in
+              controlled environments, document what I learn and turn
+              concepts into projects that demonstrate real technical skills.
+            </p>
+          </div>
+
+          <div class="about-card">
+            <h3>Areas of Interest</h3>
+            <div class="interest-list">
+              <span class="chip">Digital Forensics</span>
+              <span class="chip">Malware Analysis</span>
+              <span class="chip">Threat Intelligence</span>
+              <span class="chip">SOC Operations</span>
+              <span class="chip">Ethical Hacking</span>
+              <span class="chip">Network Security</span>
+              <span class="chip">OSINT</span>
+              <span class="chip">Security Automation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="container reveal">
+        <div class="section-label">02 / Technical Arsenal</div>
+        <h2 class="section-title">Tools, technologies & skills.</h2>
+        <p class="section-description">
+          Technologies and tools I have explored or am developing
+          practical experience with.
+        </p>
+
+        <div class="skills-grid">
+
+          <div class="skill-card">
+            <div class="skill-icon">⌘</div>
+            <h3>Security & Networking</h3>
+            <p>Network reconnaissance, security fundamentals and vulnerability assessment.</p>
+            <div class="skill-tags">
+              <span>Nmap</span>
+              <span>Wireshark</span>
+              <span>TCP/IP</span>
+              <span>DNS</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon">⌨</div>
+            <h3>Programming & Scripting</h3>
+            <p>Automation, scripting and developing security-focused utilities.</p>
+            <div class="skill-tags">
+              <span>Python</span>
+              <span>Bash</span>
+              <span>Java</span>
+              <span>Git</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon">◈</div>
+            <h3>Digital Forensics</h3>
+            <p>Exploring digital evidence acquisition, examination and analysis.</p>
+            <div class="skill-tags">
+              <span>Autopsy</span>
+              <span>Sleuth Kit</span>
+              <span>Memory Analysis</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon">◎</div>
+            <h3>OSINT & Recon</h3>
+            <p>Information gathering and attack-surface research.</p>
+            <div class="skill-tags">
+              <span>Maltego</span>
+              <span>SpiderFoot</span>
+              <span>OSINT</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon">▣</div>
+            <h3>Operating Systems</h3>
+            <p>Linux environments and Windows security fundamentals.</p>
+            <div class="skill-tags">
+              <span>Kali Linux</span>
+              <span>Linux</span>
+              <span>Windows</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon">⌬</div>
+            <h3>Security Concepts</h3>
+            <p>Security principles, investigation techniques and secure computing.</p>
+            <div class="skill-tags">
+              <span>Threat Detection</span>
+              <span>Cryptography</span>
+              <span>Incident Response</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="container reveal">
+        <div class="section-label">03 / Featured Work</div>
+        <h2 class="section-title">Projects & experiments.</h2>
+        <p class="section-description">
+          Practical projects documenting my cybersecurity journey,
+          technical exploration and hands-on learning.
+        </p>
+
+        <div class="projects-grid">
+
+          <!-- PROJECT 1 -->
+          <article class="project-card">
+            <div class="project-banner">
+              <div class="terminal">
+                <div class="terminal-top">~/logic-bomb-hunter</div>
+                <p>$ python3 scanner.py</p>
+                <p>[+] Scanning source files...</p>
+                <p>[!] Suspicious pattern found</p>
+                <p>[+] Analysis completed</p>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <h3>Logic Bomb Hunter</h3>
+              <p>
+                A Python-based source-code analysis project designed to
+                identify suspicious trigger-related patterns that may
+                indicate logic-bomb-like behaviour. Focuses on static
+                keyword analysis and highlighting potentially suspicious
+                code for further review.
+              </p>
+
+              <div class="project-tags">
+                <span>Python</span>
+                <span>Static Analysis</span>
+                <span>Security</span>
+                <span>Code Analysis</span>
+              </div>
+
+              <a href="https://github.com/YOURUSERNAME/logic-bomb-hunter"
+                 target="_blank" rel="noopener noreferrer"
+                 class="project-link">View Repository ↗</a>
+            </div>
+          </article>
+
+          <!-- PROJECT 2 -->
+          <article class="project-card">
+            <div class="project-banner">
+              <div class="terminal">
+                <div class="terminal-top">~/network-recon</div>
+                <p>$ nmap -sV target</p>
+                <p>[+] Host discovery</p>
+                <p>[+] Port enumeration</p>
+                <p>[+] Service identification</p>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <h3>Network Reconnaissance</h3>
+              <p>
+                A practical exploration of network scanning and service
+                enumeration using Nmap in authorised lab environments.
+                Documents scan techniques, findings and security
+                observations.
+              </p>
+
+              <div class="project-tags">
+                <span>Nmap</span>
+                <span>Networking</span>
+                <span>Linux</span>
+                <span>Reconnaissance</span>
+              </div>
+
+              <a href="https://github.com/YOURUSERNAME"
+                 target="_blank" rel="noopener noreferrer"
+                 class="project-link">View Repository ↗</a>
+            </div>
+          </article>
+
+          <!-- PROJECT 3 -->
+          <article class="project-card">
+            <div class="project-banner">
+              <div class="terminal">
+                <div class="terminal-top">~/osint-investigation</div>
+                <p>$ spiderfoot / maltego</p>
+                <p>[+] Information collection</p>
+                <p>[+] Entity relationships</p>
+                <p>[+] Intelligence mapping</p>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <h3>OSINT Investigation Lab</h3>
+              <p>
+                An exploration of open-source intelligence techniques
+                using OSINT tools to understand information exposure,
+                digital footprints and intelligence gathering.
+              </p>
+
+              <div class="project-tags">
+                <span>OSINT</span>
+                <span>Maltego</span>
+                <span>SpiderFoot</span>
+                <span>Recon</span>
+              </div>
+
+              <a href="https://github.com/YOURUSERNAME"
+                 target="_blank" rel="noopener noreferrer"
+                 class="project-link">View Repository ↗</a>
+            </div>
+          </article>
+
+          <!-- PROJECT 4 -->
+          <article class="project-card">
+            <div class="project-banner">
+              <div class="terminal">
+                <div class="terminal-top">~/log-analyzer</div>
+                <p>$ python3 analyzer.py</p>
+                <p>[+] Parsing logs</p>
+                <p>[+] Filtering events</p>
+                <p>[+] Generating report</p>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <h3>Security Log Analyzer</h3>
+              <p>
+                A Python automation project to parse log files,
+                identify repeated failed login attempts and highlight
+                suspicious patterns for basic security investigation.
+              </p>
+
+              <div class="project-tags">
+                <span>Python</span>
+                <span>Log Analysis</span>
+                <span>Automation</span>
+                <span>Detection</span>
+              </div>
+
+              <a href="https://github.com/YOURUSERNAME"
+                 target="_blank" rel="noopener noreferrer"
+                 class="project-link">View Repository ↗</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certifications">
+      <div class="container reveal">
+        <div class="section-label">04 / Learning & Credentials</div>
+        <h2 class="section-title">Certifications & learning.</h2>
+
+        <div class="cert-grid">
+
+          <div class="cert-card">
+            <div class="cert-icon">⌘</div>
+            <div>
+              <h3>Cybersecurity & Ethical Hacking Internship</h3>
+              <p>TechnoHacks EduTech · Internship Certificate</p>
+            </div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-icon">◈</div>
+            <div>
+              <h3>Digital Forensics on Kali Linux</h3>
+              <p>Infosys Springboard</p>
+            </div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-icon">◎</div>
+            <div>
+              <h3>Cybersecurity Learning</h3>
+              <p>Courses, labs and practical exercises</p>
+            </div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-icon">▣</div>
+            <div>
+              <h3>Continuous Learning</h3>
+              <p>Networking, Linux, security and scripting</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="container reveal">
+        <div class="section-label">05 / Education</div>
+        <h2 class="section-title">Academic background.</h2>
+
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <div class="timeline-date">Postgraduate Studies</div>
+            <h3>MSc Cybersecurity</h3>
+            <p>
+              Add your university name, current status and expected
+              graduation year here.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">Undergraduate Studies</div>
+            <h3>Bachelor of Computer Applications (BCA)</h3>
+            <p>
+              Cybersecurity specialization / background.
+              Add your university and graduation year.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container reveal">
+        <div class="contact-box">
+          <div class="section-label">06 / Get In Touch</div>
+          <h2 class="section-title">Let's connect & collaborate.</h2>
+
+          <p>
+            I am open to cybersecurity opportunities, learning experiences,
+            collaborations and conversations around technology and security.
+          </p>
+
+          <div class="contact-links">
+            <a href="mailto:YOUR_EMAIL@example.com" class="btn btn-primary">
+              Email Me ↗
+            </a>
+
+            <a href="https://github.com/YOURUSERNAME"
+               target="_blank" rel="noopener noreferrer"
+               class="btn btn-secondary">
+              GitHub ↗
+            </a>
+
+            <a href="https://linkedin.com/in/YOURPROFILE"
+               target="_blank" rel="noopener noreferrer"
+               class="btn btn-secondary">
+              LinkedIn ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>Designed & built by Daphne · <span>Cybersecurity Portfolio</span></p>
+      <p>Learning. Building. Securing.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile navigation
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("active");
+      menuBtn.setAttribute("aria-expanded", isOpen);
+      menuBtn.textContent = isOpen ? "✕" : "☰";
+    });
+
+    // Close menu after selecting a navigation link
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuBtn.textContent = "☰";
+      });
+    });
+
+    // Scroll reveal animation
+    const revealElements = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      revealElements.forEach(el => observer.observe(el));
+    } else {
+      revealElements.forEach(el => el.classList.add("visible"));
+    }
+  </script>
+
 </body>
 </html>
